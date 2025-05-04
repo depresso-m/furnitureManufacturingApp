@@ -1,66 +1,30 @@
-# Furniture Manufacturing Desktop Application
+# Приложение для управления производством мебели
+Java Swing приложение для управления производством мебели с интеграцией MongoDB.
 
-A Java Swing application for furniture manufacturing management with MongoDB integration.
+**Функционал**
+- Управление клиентами
+- Управление клиентами
+- Каталог мебели
+- Управление материалами
+- Отслеживание деталей мебели
+- Подключение к MongoDB в Docker
 
-## Features
 
-- Customer management
-- Order management
-- Furniture catalog
-- Materials management
-- Furniture details tracking
-- Database connectivity with MongoDB in Docker
+**Требования**
 
-## Requirements
-
-- Java 11 or higher
+- Java 11 или выше
 - Maven
-- Docker and Docker Compose
+- Docker и Docker Compose
 
-## Setup
+**Структура базы данных**
 
-### 1. Start MongoDB
+Приложение использует следующие коллекции MongoDB:
+- customers: Информация о клиентах
 
-```bash
-docker-compose up -d
-```
+- orders: Заказы клиентов (связь многие-к-одному с customers)
 
-This will start a MongoDB instance on port 27017.
+- furniture: Каталог мебели
 
-### 2. Build the application
+- materials: Сырье и материалы для производства
 
-```bash
-mvn clean package
-```
-
-### 3. Run the application
-
-```bash
-java -jar target/furnitureManufacturingApp-1.0-SNAPSHOT.jar
-```
-
-## Database Structure
-
-The application uses the following MongoDB collections:
-
-- **customers**: Information about clients
-- **orders**: Client orders with many-to-one relationship to customers
-- **furniture**: Furniture catalog
-- **materials**: Raw materials for production
-- **furnitureDetails**: Additional details about furniture with one-to-one relationship to furniture
-
-## Usage
-
-The application provides a simple user interface with tabs for each entity type. In each tab, you can:
-
-- View all entities in a table
-- Add new entities
-- Delete entities
-- Search for entities based on criteria
-- Sort entities based on different fields
-
-For orders and furniture details, there are additional features to manage the relationship between entities.
-
-## Docker
-
-The included `docker-compose.yml` file sets up a MongoDB instance with appropriate volume mappings for data persistence. 
+- furnitureDetails: Дополнительные детали о мебели (связь один-к-одному с furniture)
